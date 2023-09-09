@@ -1,3 +1,55 @@
+// Create a base class "Animal" with a method "makeSound"
+class Animal {
+    public void makeSound() {
+        System.out.println("The animal makes a generic sound.");
+    }
+}
+
+// Create subclasses that inherit from "Animal" and override the "makeSound" method
+class Dog extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("The dog barks.");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("The cat meows.");
+    }
+}
+
+class Cow extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("The cow moos.");
+    }
+}
+
+// Create a class to demonstrate dynamic method dispatch
+class AnimalSoundPlayer {
+    public void playAnimalSound(Animal animal) {
+        animal.makeSound();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create instances of different animals
+        Animal dog = new Dog();
+        Animal cat = new Cat();
+        Animal cow = new Cow();
+
+        // Create an AnimalSoundPlayer
+        AnimalSoundPlayer player = new AnimalSoundPlayer();
+
+        // Demonstrate dynamic method dispatch
+        player.playAnimalSound(dog); // Calls Dog's makeSound method
+        player.playAnimalSound(cat); // Calls Cat's makeSound method
+        player.playAnimalSound(cow); // Calls Cow's makeSound method
+    }
+}
 
 
 // Define an interface named "Shape" to represent geometric shapes

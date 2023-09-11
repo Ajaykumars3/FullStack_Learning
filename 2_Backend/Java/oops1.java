@@ -1,3 +1,119 @@
+
+
+// Define an interface "Playable" for objects that can be played
+interface Playable {
+    void play();
+}
+
+// Create an abstract class "Instrument" that implements "Playable"
+abstract class Instrument implements Playable {
+    private String name;
+
+    public Instrument(String name) {
+        this.name = name;
+    }
+
+    // Getter method for name
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void play() {
+        System.out.println("Playing the " + name);
+    }
+}
+
+// Create concrete classes that extend "Instrument"
+class Piano extends Instrument {
+    public Piano() {
+        super("Piano");
+    }
+}
+
+class Guitar extends Instrument {
+    public Guitar() {
+        super("Guitar");
+    }
+}
+
+// Create another interface "Tuneable" for objects that can be tuned
+interface Tuneable {
+    void tune();
+}
+
+// Create a class "TuningFork" that implements "Playable" and "Tuneable"
+class TuningFork implements Playable, Tuneable {
+    private String note;
+
+    public TuningFork(String note) {
+        this.note = note;
+    }
+
+    @Override
+    public void play() {
+        System.out.println("Striking the tuning fork with note " + note);
+    }
+
+    @Override
+    public void tune() {
+        System.out.println("Tuning with note " + note);
+    }
+}
+
+// Create a class to demonstrate polymorphism in a musical band
+class Band {
+    private Playable[] instruments;
+
+    public Band(Playable[] instruments) {
+        this.instruments = instruments;
+    }
+
+    public void playConcert() {
+        System.out.println("The band is playing a concert:");
+        for (Playable instrument : instruments) {
+            instrument.play();
+            if (instrument instanceof Tuneable) {
+                ((Tuneable) instrument).tune(); // Explicit casting to Tuneable
+            }
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create instances of musical instruments
+        Instrument piano = new Piano();
+        Instrument guitar = new Guitar();
+        Playable tuningFork = new TuningFork("A440");
+
+        // Create a band with instruments
+        Playable[] bandInstruments = { piano, guitar, tuningFork };
+        Band band = new Band(bandInstruments);
+
+        // Perform a concert using polymorphism
+        band.playConcert();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Define an interface "Drawable" for objects that can be drawn
 interface Drawable {
     void draw();

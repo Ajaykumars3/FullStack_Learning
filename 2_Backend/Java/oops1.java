@@ -1,5 +1,93 @@
 
 
+
+
+// Create an abstract class "Employee" to represent employees
+abstract class Employee {
+    private String name;
+    private int employeeId;
+
+    public Employee(String name, int employeeId) {
+        this.name = name;
+        this.employeeId = employeeId;
+    }
+
+    // Abstract method to calculate the salary of an employee
+    public abstract double calculateSalary();
+
+    // Getter methods for name and employeeId
+    public String getName() {
+        return name;
+    }
+
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
+    // Display employee information
+    public void displayInfo() {
+        System.out.println("Employee ID: " + employeeId);
+        System.out.println("Name: " + name);
+        System.out.println("Salary: " + calculateSalary());
+    }
+}
+
+// Create concrete classes that extend "Employee" and provide specific salary calculations
+class HourlyEmployee extends Employee {
+    private double hourlyRate;
+    private double hoursWorked;
+
+    public HourlyEmployee(String name, int employeeId, double hourlyRate, double hoursWorked) {
+        super(name, employeeId);
+        this.hourlyRate = hourlyRate;
+        this.hoursWorked = hoursWorked;
+    }
+
+    @Override
+    public double calculateSalary() {
+        return hourlyRate * hoursWorked;
+    }
+}
+
+class SalariedEmployee extends Employee {
+    private double annualSalary;
+
+    public SalariedEmployee(String name, int employeeId, double annualSalary) {
+        super(name, employeeId);
+        this.annualSalary = annualSalary;
+    }
+
+    @Override
+    public double calculateSalary() {
+        return annualSalary / 12; // Monthly salary for a salaried employee
+    }
+}
+
+// Create a class to demonstrate dynamic method dispatch
+class Payroll {
+    public void printEmployeeInfo(Employee employee) {
+        System.out.println("Employee Information:");
+        employee.displayInfo();
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create instances of different types of employees
+        Employee hourlyEmployee = new HourlyEmployee("John Doe", 101, 15.0, 160);
+        Employee salariedEmployee = new SalariedEmployee("Alice Smith", 102, 60000.0);
+
+        // Create a Payroll object
+        Payroll payroll = new Payroll();
+
+        // Demonstrate dynamic method dispatch
+        payroll.printEmployeeInfo(hourlyEmployee);
+        payroll.printEmployeeInfo(salariedEmployee);
+    }
+}
+
+
 // Define an interface "Playable" for objects that can be played
 interface Playable {
     void play();

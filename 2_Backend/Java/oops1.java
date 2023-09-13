@@ -2,6 +2,99 @@
 
 
 
+
+
+// Create an abstract class "BankAccount" to represent bank accounts
+abstract class BankAccount {
+    private String accountNumber;
+    private double balance;
+
+    public BankAccount(String accountNumber, double balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+    }
+
+    // Abstract method to perform a transaction
+    public abstract void performTransaction(double amount);
+
+    // Getter methods for account number and balance
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    // Display account information
+    public void displayInfo() {
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Balance: $" + balance);
+    }
+}
+
+// Create concrete classes for different account types
+class SavingsAccount extends BankAccount {
+    public SavingsAccount(String accountNumber, double balance) {
+        super(accountNumber, balance);
+    }
+
+    @Override
+    public void performTransaction(double amount) {
+        if (amount > 0) {
+            getBalance() += amount;
+        } else {
+            System.out.println("Cannot perform a negative transaction on a savings account.");
+        }
+    }
+}
+
+class CheckingAccount extends BankAccount {
+    private double overdraftLimit;
+
+    public CheckingAccount(String accountNumber, double balance, double overdraftLimit) {
+        super(accountNumber, balance);
+        this.overdraftLimit = overdraftLimit;
+    }
+
+    @Override
+    public void performTransaction(double amount) {
+        if (getBalance() + amount >= -overdraftLimit) {
+            getBalance() += amount;
+        } else {
+            System.out.println("Transaction denied. Overdraft limit exceeded.");
+        }
+    }
+}
+
+// Create a class to demonstrate banking operations
+class Bank {
+    public void processTransaction(BankAccount account, double amount) {
+        System.out.println("Processing transaction on account: " + account.getAccountNumber());
+        account.performTransaction(amount);
+        account.displayInfo();
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create instances of different bank accounts
+        BankAccount savingsAccount = new SavingsAccount("SA12345", 1000.0);
+        BankAccount checkingAccount = new CheckingAccount("CA67890", 500.0, 200.0);
+
+        // Create a Bank object
+        Bank bank = new Bank();
+
+        // Demonstrate banking operations
+        bank.processTransaction(savingsAccount, 200.0);
+        bank.processTransaction(checkingAccount, -700.0);
+    }
+}
+
+
+
+
 // Create an abstract class "Employee" to represent employees
 abstract class Employee {
     private String name;

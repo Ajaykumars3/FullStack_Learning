@@ -2,6 +2,98 @@
 
 
 
+// Create an abstract class "Animal" to represent animals
+abstract class Animal {
+    private String name;
+    private int age;
+
+    public Animal(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Abstract method for the animal's sound
+    public abstract String makeSound();
+
+    // Getter methods for name and age
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    // Display animal information
+    public void displayInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age + " years");
+    }
+}
+
+// Create concrete classes for different types of animals
+class Lion extends Animal {
+    public Lion(String name, int age) {
+        super(name, age);
+    }
+
+    @Override
+    public String makeSound() {
+        return "Roar!";
+    }
+}
+
+class Elephant extends Animal {
+    public Elephant(String name, int age) {
+        super(name, age);
+    }
+
+    @Override
+    public String makeSound() {
+        return "Trumpet!";
+    }
+}
+
+class Penguin extends Animal {
+    public Penguin(String name, int age) {
+        super(name, age);
+    }
+
+    @Override
+    public String makeSound() {
+        return "Honk!";
+    }
+}
+
+// Create a class to simulate the zoo
+class Zoo {
+    public void welcomeAnimal(Animal animal) {
+        System.out.println("Welcome to the zoo, " + animal.getName() + "!");
+        System.out.println(animal.makeSound());
+        animal.displayInfo();
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create instances of different animals
+        Animal lion = new Lion("Simba", 5);
+        Animal elephant = new Elephant("Dumbo", 10);
+        Animal penguin = new Penguin("Pingu", 3);
+
+        // Create a Zoo object
+        Zoo zoo = new Zoo();
+
+        // Welcome animals to the zoo
+        zoo.welcomeAnimal(lion);
+        zoo.welcomeAnimal(elephant);
+        zoo.welcomeAnimal(penguin);
+    }
+}
+
+
+
 
 
 // Create an abstract class "BankAccount" to represent bank accounts
@@ -60,7 +152,7 @@ class CheckingAccount extends BankAccount {
     @Override
     public void performTransaction(double amount) {
         if (getBalance() + amount >= -overdraftLimit) {
-            getBalance() += amount;
+            getBalance() += amount;s
         } else {
             System.out.println("Transaction denied. Overdraft limit exceeded.");
         }

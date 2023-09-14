@@ -1,4 +1,81 @@
 
+// Create an abstract class "Vehicle" to represent vehicles
+abstract class Vehicle {
+    private String brand;
+
+    public Vehicle(String brand) {
+        this.brand = brand;
+    }
+
+    // Abstract methods for vehicle operations
+    public abstract void start();
+
+    public abstract void stop();
+
+    // Getter method for brand
+    public String getBrand() {
+        return brand;
+    }
+}
+
+// Create concrete classes for different types of vehicles
+class Car extends Vehicle {
+    public Car(String brand) {
+        super(brand);
+    }
+
+    @Override
+    public void start() {
+        System.out.println("Starting the " + getBrand() + " car.");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("Stopping the " + getBrand() + " car.");
+    }
+}
+
+class Motorcycle extends Vehicle {
+    public Motorcycle(String brand) {
+        super(brand);
+    }
+
+    @Override
+    public void start() {
+        System.out.println("Starting the " + getBrand() + " motorcycle.");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("Stopping the " + getBrand() + " motorcycle.");
+    }
+}
+
+// Create a class to demonstrate vehicle operations
+class Garage {
+    public void operateVehicle(Vehicle vehicle) {
+        System.out.println("Operating the " + vehicle.getBrand() + ":");
+        vehicle.start();
+        vehicle.stop();
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create instances of different vehicles
+        Vehicle car = new Car("Toyota");
+        Vehicle motorcycle = new Motorcycle("Harley-Davidson");
+
+        // Create a Garage object
+        Garage garage = new Garage();
+
+        // Operate vehicles in the garage
+        garage.operateVehicle(car);
+        garage.operateVehicle(motorcycle);
+    }
+}
+
 
 
 

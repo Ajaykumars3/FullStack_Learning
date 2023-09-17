@@ -1,3 +1,88 @@
+
+
+// Create an abstract class "MediaItem" to represent media items
+abstract class MediaItem {
+    private String title;
+    private int year;
+
+    public MediaItem(String title, int year) {
+        this.title = title;
+        this.year = year;
+    }
+
+    // Abstract method to display media information
+    public abstract void display();
+
+    // Getter methods for title and year
+    public String getTitle() {
+        return title;
+    }
+
+    public int getYear() {
+        return year;
+    }
+}
+
+// Create concrete classes for different types of media items
+class Book extends MediaItem {
+    private String author;
+
+    public Book(String title, int year, String author) {
+        super(title, year);
+        this.author = author;
+    }
+
+    @Override
+    public void display() {
+        System.out.println("Book Title: " + getTitle());
+        System.out.println("Author: " + author);
+        System.out.println("Year: " + getYear());
+    }
+}
+
+class Movie extends MediaItem {
+    private String director;
+
+    public Movie(String title, int year, String director) {
+        super(title, year);
+        this.director = director;
+    }
+
+    @Override
+    public void display() {
+        System.out.println("Movie Title: " + getTitle());
+        System.out.println("Director: " + director);
+        System.out.println("Year: " + getYear());
+    }
+}
+
+// Create a class to simulate a library
+class Library {
+    public void displayMediaInfo(MediaItem mediaItem) {
+        System.out.println("Displaying information for: " + mediaItem.getTitle());
+        mediaItem.display();
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create instances of different media items
+        MediaItem book = new Book("The Catcher in the Rye", 1951, "J.D. Salinger");
+        MediaItem movie = new Movie("The Shawshank Redemption", 1994, "Frank Darabont");
+
+        // Create a Library object
+        Library library = new Library();
+
+        // Display media information in the library
+        library.displayMediaInfo(book);
+        library.displayMediaInfo(movie);
+    }
+}
+
+
+
+
 // Create an abstract class "Vehicle" to represent vehicles
 abstract class Vehicle {
     private String brand;

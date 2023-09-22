@@ -1,3 +1,86 @@
+
+
+
+
+// Create an abstract class "Dish" to represent dishes
+abstract class Dish {
+    private String name;
+    private double price;
+
+    public Dish(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    // Abstract method to display dish information
+    public abstract void display();
+
+    // Getter methods for name and price
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+}
+
+// Create concrete classes for different types of dishes
+class Appetizer extends Dish {
+    public Appetizer(String name, double price) {
+        super(name, price);
+    }
+
+    @Override
+    public void display() {
+        System.out.println("Appetizer: " + getName());
+        System.out.println("Price: $" + getPrice());
+    }
+}
+
+class MainCourse extends Dish {
+    private String type;
+
+    public MainCourse(String name, double price, String type) {
+        super(name, price);
+        this.type = type;
+    }
+
+    @Override
+    public void display() {
+        System.out.println("Main Course: " + getName());
+        System.out.println("Price: $" + getPrice());
+        System.out.println("Type: " + type);
+    }
+}
+
+// Create a class to simulate a restaurant ordering system
+class Restaurant {
+    public void orderDish(Dish dish) {
+        System.out.println("Ordering: " + dish.getName());
+        dish.display();
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create instances of different dishes
+        Dish appetizer = new Appetizer("Caesar Salad", 7.99);
+        Dish mainCourse = new MainCourse("Spaghetti Bolognese", 12.99, "Pasta");
+        Dish dessert = new Appetizer("Chocolate Cake", 5.99);
+
+        // Create a Restaurant object
+        Restaurant restaurant = new Restaurant();
+
+        // Place orders at the restaurant
+        restaurant.orderDish(appetizer);
+        restaurant.orderDish(mainCourse);
+        restaurant.orderDish(dessert);
+    }
+}
+
+
 // Create an abstract class "BankAccount" to represent bank accounts
 abstract class BankAccount {
     private String accountNumber;

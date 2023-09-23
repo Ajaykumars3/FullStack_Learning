@@ -2,6 +2,109 @@
 
 
 
+
+
+
+
+
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+// Create an abstract class "MediaItem" to represent media items
+abstract class MediaItem {
+    private String title;
+    private String artist;
+
+    public MediaItem(String title, String artist) {
+        this.title = title;
+        this.artist = artist;
+    }
+
+    // Abstract method to play the media item
+    public abstract void play();
+
+    // Getter methods for title and artist
+    public String getTitle() {
+        return title;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+}
+
+// Create concrete classes for different types of media items
+class Song extends MediaItem {
+    private int duration; // Duration in seconds
+
+    public Song(String title, String artist, int duration) {
+        super(title, artist);
+        this.duration = duration;
+    }
+
+    @Override
+    public void play() {
+        System.out.println("Playing Song: " + getTitle());
+        System.out.println("Artist: " + getArtist());
+        System.out.println("Duration: " + duration + " seconds");
+    }
+}
+
+class Playlist extends MediaItem {
+    private List<MediaItem> items;
+
+    public Playlist(String title, String artist) {
+        super(title, artist);
+        items = new ArrayList<>();
+    }
+
+    public void addMediaItem(MediaItem item) {
+        items.add(item);
+    }
+
+    @Override
+    public void play() {
+        System.out.println("Playing Playlist: " + getTitle());
+        System.out.println("Artist: " + getArtist());
+
+        for (MediaItem item : items) {
+            item.play();
+        }
+    }
+}
+
+// Create a class to simulate a music library
+class MusicLibrary {
+    public void playMediaItem(MediaItem item) {
+        System.out.println("Now playing: " + item.getTitle());
+        item.play();
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create instances of different media items
+        MediaItem song1 = new Song("Bohemian Rhapsody", "Queen", 360);
+        MediaItem song2 = new Song("Imagine", "John Lennon", 240);
+
+        Playlist playlist = new Playlist("My Playlist", "Various Artists");
+        playlist.addMediaItem(song1);
+        playlist.addMediaItem(song2);
+
+        // Create a MusicLibrary object
+        MusicLibrary musicLibrary = new MusicLibrary();
+
+        // Play media items
+        musicLibrary.playMediaItem(song1);
+        musicLibrary.playMediaItem(playlist);
+    }
+}
+
+
+
 // Create an abstract class "Dish" to represent dishes
 abstract class Dish {
     private String name;

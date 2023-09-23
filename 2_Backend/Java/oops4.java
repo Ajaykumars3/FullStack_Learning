@@ -36,21 +36,21 @@ abstract class MediaItem {
 }
 
 // Create concrete classes for different types of media items
-class Song extends MediaItem {
-    private int duration; // Duration in seconds
+// class Song extends MediaItem {
+//     private int duration; // Duration in seconds
 
-    public Song(String title, String artist, int duration) {
-        super(title, artist);
-        this.duration = duration;
-    }
+//     public Song(String title, String artist, int duration) {
+//         super(title, artist);
+//         this.duration = duration;
+//     }
 
-    @Override
-    public void play() {
-        System.out.println("Playing Song: " + getTitle());
-        System.out.println("Artist: " + getArtist());
-        System.out.println("Duration: " + duration + " seconds");
-    }
-}
+//     @Override
+//     public void play() {
+//         System.out.println("Playing Song: " + getTitle());
+//         System.out.println("Artist: " + getArtist());
+//         System.out.println("Duration: " + duration + " seconds");
+//     }
+// }
 
 class Playlist extends MediaItem {
     private List<MediaItem> items;

@@ -3,6 +3,82 @@
 
 
 
+// Create an abstract class "Animal" to represent animals
+abstract class Animal {
+    private String name;
+
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    // Abstract methods to represent animal behaviors
+    public abstract void speak();
+
+    public abstract void move();
+
+    // Getter method for name
+    public String getName() {
+        return name;
+    }
+}
+
+// Create concrete classes for different types of animals
+class Dog extends Animal {
+    public Dog(String name) {
+        super(name);
+    }
+
+    @Override
+    public void speak() {
+        System.out.println(getName() + " says Woof!");
+    }
+
+    @Override
+    public void move() {
+        System.out.println(getName() + " runs on four legs.");
+    }
+}
+
+class Bird extends Animal {
+    public Bird(String name) {
+        super(name);
+    }
+
+    @Override
+    public void speak() {
+        System.out.println(getName() + " chirps!");
+    }
+
+    @Override
+    public void move() {
+        System.out.println(getName() + " flies through the sky.");
+    }
+}
+
+// Create a class to simulate a zoo
+class Zoo {
+    public void interactWithAnimal(Animal animal) {
+        System.out.println("Interacting with " + animal.getName() + ":");
+        animal.speak();
+        animal.move();
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create instances of different animals
+        Animal dog = new Dog("Buddy");
+        Animal bird = new Bird("Robin");
+
+        // Create a Zoo object
+        Zoo zoo = new Zoo();
+
+        // Interact with animals in the zoo
+        zoo.interactWithAnimal(dog);
+        zoo.interactWithAnimal(bird);
+    }
+}
 
 
 

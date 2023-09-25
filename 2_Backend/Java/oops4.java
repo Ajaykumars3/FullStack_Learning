@@ -3,6 +3,103 @@
 
 
 
+
+// Create an abstract class "Vehicle" to represent vehicles
+abstract class Vehicle {
+    private String brand;
+    private String model;
+
+    public Vehicle(String brand, String model) {
+        this.brand = brand;
+        this.model = model;
+    }
+
+    // Abstract method to display vehicle information
+    public abstract void display();
+
+    // Getter methods for brand and model
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+}
+
+// Create concrete classes for different types of vehicles
+class Car extends Vehicle {
+    private int seatingCapacity;
+
+    public Car(String brand, String model, int seatingCapacity) {
+        super(brand, model);
+        this.seatingCapacity = seatingCapacity;
+    }
+
+    @Override
+    public void display() {
+        System.out.println("Car: " + getBrand() + " " + getModel());
+        System.out.println("Seating Capacity: " + seatingCapacity + " persons");
+    }
+}
+
+class Motorcycle extends Vehicle {
+    private String type;
+
+    public Motorcycle(String brand, String model, String type) {
+        super(brand, model);
+        this.type = type;
+    }
+
+    @Override
+    public void display() {
+        System.out.println("Motorcycle: " + getBrand() + " " + getModel());
+        System.out.println("Type: " + type);
+    }
+}
+
+// Create a class to simulate a vehicle rental system
+class VehicleRental {
+    public void rentVehicle(Vehicle vehicle, int days) {
+        System.out.println("Renting Vehicle: " + vehicle.getBrand() + " " + vehicle.getModel());
+        vehicle.display();
+        System.out.println("Rental Duration: " + days + " days");
+        System.out.println("Total Rental Cost: $" + calculateRentalCost(vehicle, days));
+        System.out.println();
+    }
+
+    private double calculateRentalCost(Vehicle vehicle, int days) {
+        // Calculate rental cost based on the type of vehicle and number of days
+        double baseCost;
+        if (vehicle instanceof Car) {
+            baseCost = 50.0; // Daily rate for cars
+        } else if (vehicle instanceof Motorcycle) {
+            baseCost = 30.0; // Daily rate for motorcycles
+        } else {
+            baseCost = 0.0;
+        }
+        return baseCost * days;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create instances of different vehicles
+        Vehicle car = new Car("Toyota", "Camry", 5);
+        Vehicle motorcycle = new Motorcycle("Honda", "CBR500R", "Sport");
+
+        // Create a VehicleRental object
+        VehicleRental rental = new VehicleRental();
+
+        // Rent vehicles for a specific number of days
+        rental.rentVehicle(car, 3);
+        rental.rentVehicle(motorcycle, 2);
+    }
+}
+
+
+
+
 // Create an abstract class "Animal" to represent animals
 abstract class Animal {
     private String name;
@@ -79,6 +176,7 @@ public class Main {
         zoo.interactWithAnimal(bird);
     }
 }
+
 
 
 

@@ -633,11 +633,11 @@ interface Drawable {
 }
 
 // Create an abstract class "Shape" that implements "Drawable"
-abstract class Shape implements Drawable {
-    private String color;
+// abstract class Shape implements Drawable {
+//     private String color;
 
-    public Shape(String color) {
-        this.color = color;
+//     public Shape(String color) {
+//         this.color = color;
     }
 
     public abstract double area(); // Abstract method to calculate the area of the shape

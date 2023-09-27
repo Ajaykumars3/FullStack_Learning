@@ -1,14 +1,14 @@
 
 
 // Create an abstract class "MediaItem" to represent media items
-abstract class MediaItem {
-    private String title;
-    private int year;
+// abstract class MediaItem {
+//     private String title;
+//     private int year;
 
-    public MediaItem(String title, int year) {
-        this.title = title;
-        this.year = year;
-    }
+//     public MediaItem(String title, int year) {
+//         this.title = title;
+//         this.year = year;
+//     }
 
     // Abstract method to display media information
     public abstract void display();

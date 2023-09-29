@@ -40,8 +40,8 @@ class Book extends MediaItem {
     }
 }
 
-class Movie extends MediaItem {
-    private String director;
+// class Movie extends MediaItem {
+//     private String director;
 
     public Movie(String title, int year, String director) {
         super(title, year);

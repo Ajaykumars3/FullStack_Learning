@@ -27,9 +27,9 @@ abstract class MediaItem {
 class Book extends MediaItem {
     private String author;
 
-    public Book(String title, int year, String author) {
-        super(title, year);
-        this.author = author;
+    // public Book(String title, int year, String author) {
+    //     super(title, year);
+    //     this.author = author;
     }
 
     @Override

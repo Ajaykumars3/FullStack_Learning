@@ -1,8 +1,8 @@
 
 
-// Create an abstract class "MediaItem" to represent media items
-// abstract class MediaItem {
-//     private String title;
+Create an abstract class "MediaItem" to represent media items
+abstract class MediaItem {
+    private String title;
     private int year;
 
     // public MediaItem(String title, int year) {

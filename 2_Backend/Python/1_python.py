@@ -4,8 +4,8 @@ num = [4, 5, 6]
 # a, b, c = num
 # l=m=n=5
 # print(x , y , z)
-print(a , b , c)
-# print(l , m , n)
+# print(a , b , c)
+print(l , m , n)
 
 # variable name
 # myVar = 1

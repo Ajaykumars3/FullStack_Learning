@@ -1,6 +1,6 @@
 
 #x, y, z = 1, 2, 3
-#num = [4, 5, 6]
+num = [4, 5, 6]
 # a, b, c = num
 # l=m=n=5
 # print(x , y , z)
@@ -9,7 +9,7 @@
 
 variable name
 # myVar = 1
-# MyVar = 2
+MyVar = 2
 # my_var = 3
 
 # x=3

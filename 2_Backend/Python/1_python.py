@@ -9,7 +9,7 @@ num = [4, 5, 6]
 
 variable name
 # myVar = 1
-MyVar = 2
+# MyVar = 2
 # my_var = 3
 
 # x=3

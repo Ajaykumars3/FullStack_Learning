@@ -20,7 +20,7 @@ variable name
 # it's Single line comment
 """ its multi line comment"""
 
-# x=5
+x=5
 # if x>3:
 #     print("True")
 # else:

@@ -8,7 +8,7 @@ a, b, c = num
 print(l , m , n)
 
 variable name
-# myVar = 1
+ myVar = 1
 # MyVar = 2
 # my_var = 3
 
